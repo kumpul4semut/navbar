@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+ </head>
+<body>
+
+<nav class="mobile-bottom-nav">
+	
+ <div class="btn-group">
+  
+  <a href="go:Chat1"><button><b>Chat</button>
+  <a href="go:Admin"><button><b>Admin</button>
+  <a href="go:Other"><button><b>Project</button>
+</div>
+	
+		
+	</div>
+</nav>
+
+<style>
+body{
+	//dev
+	//height:2000px;
+	padding:10px;
+	padding-bottom:50px;
+}
+h1{
+	margin-bottom:2000px;
+}
+
+.mobile-bottom-nav{
+	position:fixed;
+	bottom:0;
+	left:0;
+	right:0;
+	z-index:1000;
+	
+	//give nav it's own compsite layer
+	will-change:transform;
+	transform: translateZ(0);
+	
+	display:flex;	
+	
+	height:40px;
+	
+	box-shadow: 0 -2px 5px -2px #333;
+	background-color:#000000;
+	
+	&__item{
+		flex-grow:1;
+		text-align:center;
+		font-size:12px;
+		
+		display:flex;
+		flex-direction:column;
+		justify-content:center;
+	}
+	&__item--active{
+		//dev
+		color:red;
+	}
+	&__item-content{ 
+		display:flex;
+		flex-direction:column;		
+	}
+}
+
+.btn-group button {
+  background-color: #000000;
+  border: 1px solid lime;
+  color: white;
+  font-style: normal;
+  padding: 10px 24px;
+  cursor: pointer;
+  float: left;
+  border-radius: 10px;
+}
+
+.btn-group:after {
+  clear: both;
+  display: table;
+}
+
+.btn-group button:not(:last-child) {
+  border-right: none;
+}
+
+.btn-group button:hover {
+  background-color: #000000;
+}
+
+</style>
+
+<script type="text/javascript">
+var navItems = document.querySelectorAll(".mobile-bottom-nav__item");
+navItems.forEach(function(e, i) {
+	e.addEventListener("click", function(e) {
+		navItems.forEach(function(e2, i2) {
+			e2.classList.remove("mobile-bottom-nav__item--active");
+		})
+		this.classList.add("mobile-bottom-nav__item--active");
+	});
+});
